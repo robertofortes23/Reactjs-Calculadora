@@ -21,6 +21,11 @@ export default class Calculator extends Component {
     this.addDigit = this.addDigit.bind(this);
   }
 
+  clearMemory() {
+    console.log("limpar");
+    this.setState({ ...initialState });
+  }
+
   setOperation(operation) {
     if (this.state.current === 0) {
       this.setState({ operation, current: 1, clearDisplay: true });
