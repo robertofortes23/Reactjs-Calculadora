@@ -29,6 +29,29 @@ export default class Calculator extends Component {
     }
   }
 
+  addDigit(n) {
+    // Evita ter 2 pontos na calculadora
+    if (n === "." && this.state.displayValue.includes('.')) {
+      return;
+    }
+
+    // Evitar zeros a esquerda
+    const clearDisplay = this.state.displayValue === '0'
+       || this.state.clearDisplay;
+    const currentValue = clearDisplay ? "" : this.state.displayValue;
+    const displayValue = currentValue + n;
+    this.setState({ displayValue, clearDisplay: false });
+
+    if (n !== ".") {
+      const i = this.state.current;
+      const newValue = parseFloat(displayValue);
+      const values = [...this.state.values];
+      values[i] = newValue;
+      this.setState({ values });
+      console.log(values);
+    }
+  }
+
   render() {
     // Garantem que o this vai estar correto
     // const addDigit = n => this.addDigit(n)
