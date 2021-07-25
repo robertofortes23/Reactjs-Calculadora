@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import "./Calculator.css";
 
+const initialState = {
+  displayValue: "0",
+  clearDisplay: false,
+  operation: null,
+  values: [0, 0],
+  current: 0,
+};
+
 export default class Calculator extends Component {
+  state = { ...initialState };
+
+  constructor(props) {
+    super(props);
+
+    // Garantem que o this vai estar correto
+    this.clearMemory = this.clearMemory.bind(this);
+    this.setOperation = this.setOperation.bind(this);
+    this.addDigit = this.addDigit.bind(this);
+  }
 
   setOperation(operation) {
     if (this.state.current === 0) {
