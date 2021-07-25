@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./Calculator.css";
 
+import Button from "../components/Button";
+import Display from "../components/Display";
+
 const initialState = {
   displayValue: "0",
   clearDisplay: false,
@@ -81,6 +84,7 @@ export default class Calculator extends Component {
     // const setOperation = op => this.setOperation(op)
     return (
       <div className="calculator">
+        <Display value={this.state.displayValue} />
         <Button label="AC" click={this.clearMemory} triple />
         {/* <Button label="AC" click={() => this.clearMemory()}/> */}
         <Button label="/" click={this.setOperation} operation />
